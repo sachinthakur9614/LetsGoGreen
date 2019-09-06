@@ -1,0 +1,81 @@
+{% extends 'nav_plant_tree.html' %}
+
+{%load staticfiles %}
+
+
+{%block content %}
+ <!--================ End Home Banner Area =================-->
+    <style>
+    /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+    #map {
+        height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+
+
+
+  <div id="map"></div>
+		
+
+    <script>
+
+    var locations = [
+        ['Christ University', 12.9347499, 77.6040834,  4],
+        ['Coogee Beach',  31.0782882, 77.1240016, 5],
+        ['Cronulla Beach', 22.2134008,84.7541112, 3],
+        ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+        ['Maroubra Beach', 30.7451882,77.2381702, 1]
+    ];
+
+
+    // When the user clicks the marker, an info window opens.
+
+    function initMap() {
+        var myLatLng = {lat: -33.90, lng: 151.16};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: myLatLng
+            });
+
+        var count=0;
+
+
+        for (count = 0; count < locations.length; count++) {  
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+                map: map
+                });
+
+            marker.info = new google.maps.InfoWindow({
+                content: locations [count][0]
+                });
+
+
+            google.maps.event.addListener(marker, 'click', function() {  
+                // this = marker
+                var marker_map = this.getMap();
+                this.info.open(marker_map, this);
+                // Note: If you call open() without passing a marker, the InfoWindow will use the position specified upon construction through the InfoWindowOptions object literal.
+                });
+        }
+    }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMrGmYvzdZqSNlMuVa37hHUFRS-y4G5q8&callback=initMap">
+    </script>
+    
+
+{% endblock %}
+
+
+

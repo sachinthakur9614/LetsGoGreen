@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+{%load staticfiles %}
+	<title>CIA 3 Componenet Submission</title>
+    <link rel="shortcut icon" href="{% static 'logo.png' %}" />
+
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">	
+    <!-- Plugin CSS -->
+    <link href="{% static 'magnific-popup/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/cia3.min.css'% }" rel="stylesheet">
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-tr" href="#page-top"> <img src="logo.png"  width="50" height="50"> &nbsp;CIA 3  </a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#signup">Signup</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#login">Login</a>
+            </li>
+    <!-- / NOT required as of NOW -->
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#resume"></a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+            
+          </ul>
+        </div>
+       </div>
+    </nav>
+
+
+<section class="introduction bg-primary text-white mb-0" >
+<br>
+<br>
+<div class="container">
+<h3 class="text-center text-uppercase text-secondary mb-5" >  Create A Dynamic Website  with CRUD Operations</h3>
+
+<hr class="star-light mb-5">
+<div class="row">
+<div class="col-lg-4 ml-auto">
+
+<h4></h4>
+	
+</div>
+	
+</div>
+	
+</div>	
+
+
+</section>
+
+
+    	<section id="signup">
+
+    	<div class="container">
+    		<h2 class="text-center text-uppercase text-secondary  mb-0" > Sign Up</h2>
+
+    		<hr class="star-dark  mb-5">
+    		<div class="row">
+
+    		<div class="col-md-8 mx-auto">
+    		<form  name="signup" action="signup.php" method="POST">
+
+    		<div class="control-group">
+    		<div class="form-group floating-label-form controls mb-0 pb-3">
+    		<label>Name:</label>
+    		<input class="form-control" type="text" name="name" placeholder="name" required="required" data-validation-required-message="Please Enter Your Name.">
+    		<p class="help-block text-danger"></p>
+    		</div>
+    		</div>
+
+
+
+    		<div  class="control-group">
+    			<div class="form-group floating-label-form controls mb-0 pb-3">
+    			<label>Email Address:</label>
+    			<input class="form-control" type="email" name="email" placeholder="name.title@mca.christuniveristy.in" required="required" data-validation-required-message="Please Enter Your Email Address.">
+    			<p class="help-block text-danger"></p>
+    		</div>
+    		</div>
+    		<div  class="control-group">
+    			<div class="form-group floating-label-form controls mb-0 pb-3">
+    			<label>Password:</label>
+    			<input class="form-control" type="password" name="password" placeholder="Password" required="required" data-validation-required-message="Please Enter Your Password.">
+    			<p class="help-block text-danger"></p>
+    		</div>
+    		</div>
+                <div class="control-group">
+                <div class="form-control floating-label-form controls mb-0 pb-3">
+                    <label>Select User</label>
+                    <select    name="usertype" onchange="toggle_name();">
+                    <option  >Select Option</option>
+                    
+                    <option   value="Student" >Student</option>
+                    <option   value="Teacher" >Teacher</option>
+                                            
+
+                    </select>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+
+    		<div class="control-group"  >
+    			<div id="register_div" class="form-group floating-label-form controls mb-0 pb-3" id="register">
+    			<label  id="register_lb">Register No:</label>
+    				<input class="form-control" type="text" name="register"  id="register_n" required="required"  data-validation-required-message="Please Enter Your Register Number.">
+    				<p class="help-block text-danger"></p>
+    			</div>
+    		</div>
+
+    	<div class="control-group">
+    			<div class="form-control floating-label-form controls mb-0 pb-3">
+    				<label>Select User</label>
+    				<select    name="usertype">
+    				<option  >Select Option</option>
+					
+    				<option   value="Student" >Student</option>
+					<option   value="Teacher" >Teacher</option>
+    				    					
+
+    				</select>
+    				<p class="help-block text-danger"></p>
+ 				</div>
+    		</div>
+    		<br>
+    		<div id="success"></div>
+    		<div class="form-group">
+    		<button type="submit"  class="btn btn-primary btn-xl"> Submit</button>
+    		</div>
+    		</form>
+    	</div>
+    	</div>
+    	</div>
+    	</section>
+		
+	
+		<section id="login">
+
+    		<div class="container">
+    		<h2 class="text-center text-uppercase text-secondary mb-0" > Login </h2>
+    		<hr class="star-dark mb-5">
+    		<div class="row">
+
+    		<div class="col-md-8 mx-auto">
+    		<form  name="signup" action="login.php" method="POST">
+
+    		<div class="control-group">
+    		<div class="form-group floating-label-form controls mb-0 pb-3">
+    		<label>Email Address:</label>
+    		<input class="form-control" type="email" name="email" placeholder="name.title@mca.christuniveristy.in" required="required" data-validation-required-message="Please Enter Your Email.">
+    		<p class="help-block text-danger"></p>
+    		</div>
+    		</div>
+
+
+
+    		<div  class="control-group">
+    			<div class="form-group floating-label-form controls mb-0 pb-3">
+    			<label>Password:</label>
+    			<input class="form-control" type="password" name="password" placeholder="Password" required="required" data-validation-required-message="Please Enter Your Password.">
+    			<p class="help-block text-danger"></p>
+    		</div>
+    		</div>
+    		<div id="success"></div>
+    		<div class="form-group">
+    		<button type="submit"  class="btn btn-primary btn-xl"> Submit</button>
+    		</div>
+    		</form>
+    		</div>
+    		</div>
+    		</div>
+    		</section>
+
+
+
+
+  <footer class="text-center">
+<div class="copyright py-4 text-center text-white">
+<div class="container">
+	<big>Copyright &copy; All right Reserved to Sachin Thakur</big>
+</div>
+</div>
+</footer>
+ <script type="text/javascript">
+     
+
+ 
+$(function () {
+    toggle_name();
+});
+function toggle_name()
+{
+    grp_type = $('#u_group option:selected').val();
+
+  /*  if(grp_type == 4) {
+
+        $('#register').html('Institute Name&nbsp;<font color="red">*</font>');
+        $('#register').attr('placeholder', "Institut");
+        $('#register').slideUp();
+
+    } else {
+*/
+ if(grp_type=="Teacher")
+ {
+        $('#register_lb').html('Register No&nbsp;<font color="red">*</font>');
+        $('#register_n').attr('placeholder', "Register no");
+         $('#register_div').slideUp();
+    }
+}
+</script>
+</body>
+</html>

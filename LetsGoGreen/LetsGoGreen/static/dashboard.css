@@ -1,0 +1,223 @@
+::selection {
+  background: lawngreen;
+  /* WebKit/Blink Browsers */ }
+
+.main {
+  background: #f1bcb4;
+  padding-top: 8px;
+  padding-bottom: 8px; }
+  .main .fas {
+    cursor: pointer; }
+  .main .fa-bars {
+    background: #8b5c7e;
+    padding: 5px;
+    border-radius: 50%;
+    color: white; }
+  .main .fa-bell {
+    background: #8b5c7e;
+    padding: 5px;
+    border-radius: 50%;
+    color: white; }
+  .main .fa-envelope {
+    background: #8b5c7e;
+    padding: 5px;
+    border-radius: 50%;
+    color: white; }
+  .main .search-bar {
+    margin-top: -8px;
+    margin-bottom: -8px;
+    background: #8b5c7e; }
+    .main .search-bar input[type=text] {
+      width: 130px;
+      border: 0;
+      border-radius: 0;
+      font-size: 12px;
+      background: #b987ab;
+      padding: 12px 20px 12px 20px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out; }
+    .main .search-bar input[type=text]:focus {
+      width: 100%;
+      border-right: 1px solid green;
+      border-left: 1px solid green;
+      border-top: 0;
+      caret-color: #757575;
+      border-bottom: 0;
+      outline: none; }
+  .main .username {
+    background: #8b5c7e;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: -8px;
+    margin-bottom: -8px; }
+    .main .username img {
+      width: 24px;
+      margin-right: 12px;
+      border-radius: 50%; }
+    .main .username a {
+      color: black;
+      transition: 0.4s ease-in-out;
+      text-decoration: none; }
+  .main .username:hover {
+    color: white; }
+  .main .username:hover > a {
+    color: white;
+    transition: 0.4s ease-in-out;
+    text-decoration: none; }
+
+.below-section {
+  background: #fcb597;
+  color: white; }
+  .below-section .stat-section {
+    padding-top: 32px; }
+    .below-section .stat-section .worldwide {
+      background-color: #fb3157; }
+      .below-section .stat-section .worldwide .fa-globe {
+        padding-top: 16px;
+        font-size: 32px; }
+      .below-section .stat-section .worldwide .first {
+        font-family: Montserrat,sans-serif;
+        font-weight: 600;
+        padding-top: 12px;
+        font-size: 16px; }
+      .below-section .stat-section .worldwide .second {
+        font-family: Montserrat, sans-serif;
+        font-weight: 600;
+        font-size: 20px; }
+      .below-section .stat-section .worldwide .third {
+        font-family: Montserrat, sans-serif;
+        font-size: 12px; }
+    .below-section .stat-section .contribution {
+      background-color: #fb3157; }
+      .below-section .stat-section .contribution .fa-tree {
+        padding-top: 16px;
+        font-size: 32px; }
+      .below-section .stat-section .contribution .first {
+        font-family: Montserrat,sans-serif;
+        font-weight: 600;
+        padding-top: 12px;
+        font-size: 16px; }
+      .below-section .stat-section .contribution .second {
+        font-family: Montserrat, sans-serif;
+        font-weight: 600;
+        font-size: 20px; }
+      .below-section .stat-section .contribution .third {
+        font-family: Montserrat, sans-serif;
+        font-size: 12px; }
+    .below-section .stat-section .current-balance {
+      background-color: #fb3157; }
+      .below-section .stat-section .current-balance .fa-funnel-dollar {
+        padding-top: 16px;
+        font-size: 32px; }
+      .below-section .stat-section .current-balance .first {
+        font-family: Montserrat,sans-serif;
+        font-weight: 600;
+        padding-top: 12px;
+        font-size: 16px; }
+      .below-section .stat-section .current-balance .second {
+        font-family: Montserrat, sans-serif;
+        font-weight: 600;
+        font-size: 20px; }
+      .below-section .stat-section .current-balance .third {
+        font-family: Montserrat, sans-serif;
+        font-size: 12px; }
+    .below-section .stat-section .total-earned {
+      background-color: #fb3157; }
+      .below-section .stat-section .total-earned .fa-money-check-alt {
+        padding-top: 16px;
+        font-size: 32px; }
+      .below-section .stat-section .total-earned .first {
+        font-family: Montserrat,sans-serif;
+        font-weight: 600;
+        padding-top: 12px;
+        font-size: 16px; }
+      .below-section .stat-section .total-earned .second {
+        font-family: Montserrat, sans-serif;
+        font-weight: 600;
+        font-size: 20px; }
+      .below-section .stat-section .total-earned .third {
+        font-family: Montserrat, sans-serif;
+        font-size: 12px; }
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  background-size: 300px 1000px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.6) url("../../assets/sidenavbg.jpg") no-repeat;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px; }
+  .sidenav img {
+    width: 50%;
+    margin-left: 25%; }
+  .sidenav .social-icon {
+    color: #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 16px 16px 16px 36px;
+    margin-bottom: 16px; }
+    .sidenav .social-icon .fab {
+      cursor: pointer; }
+    .sidenav .social-icon .fa-instagram {
+      padding-right: 16px;
+      transition: all 0.4s ease-in-out; }
+    .sidenav .social-icon .fa-facebook-f {
+      transition: all 0.4s ease-in-out; }
+    .sidenav .social-icon .fa-linkedin-in {
+      transition: all 0.4s ease-in-out; }
+    .sidenav .social-icon .fa-twitter {
+      transition: all 0.4s ease-in-out; }
+    .sidenav .social-icon .fa-instagram:hover {
+      transition: all 0.4s ease-in-out;
+      color: #f2003c; }
+    .sidenav .social-icon .fa-facebook-f:hover {
+      transition: all 0.4s ease-in-out;
+      color: #3b5998; }
+    .sidenav .social-icon .fa-linkedin-in:hover {
+      transition: all 0.4s ease-in-out;
+      color: #0077B5; }
+    .sidenav .social-icon .fa-twitter:hover {
+      transition: all 0.4s ease-in-out;
+      color: #00acee; }
+  .sidenav .menu {
+    transition: all 0.4s ease-in-out; }
+  .sidenav .menu:hover {
+    background-color: #2AD1A3;
+    color: white;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer; }
+  .sidenav .menu:hover > .menu-sub {
+    color: white; }
+  .sidenav .menu-sub {
+    text-align: left;
+    color: #9c9999;
+    font-size: 16px;
+    padding: 4px 4px 4px 32px;
+    transition: all 0.4s ease-in-out; }
+  .sidenav .menu-sub :hover {
+    cursor: pointer;
+    transition: all 0.4s ease-in-out; }
+
+.sidenav a {
+  z-index: 33;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s; }
+
+.sidenav a:hover {
+  color: #f1f1f1; }
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px; }
+
+/*# sourceMappingURL=login.component.css.map */

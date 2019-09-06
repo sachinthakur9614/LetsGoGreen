@@ -1,0 +1,131 @@
+{% extends 'nav_crowd_funds.html' %}
+<!doctype html>
+<html lang="en">
+    <head>
+{%load staticfiles %}
+
+{% block content%}
+
+<br><br><br><br><br><br><br>
+<div class="container">
+	<div class="row">
+
+<div class="col-md-8">
+
+      <h3 class="text-center"> Contribute Sapling</h3>
+    <hr class="bg-info col-md-8">
+        {% if error %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <strong> {{error}}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        {% endif %}
+
+       
+
+
+
+
+
+      <form action="{% url 'addSapling' %}"  class="contact_form" method="POST" >
+      
+      {% csrf_token %}
+
+
+
+        <div class="form-group">
+        	
+        	
+    <label for="firstname"> Tree Name</label>
+    <input type="text" class="form-control "  name="treeName" id="firstname" value="" aria-describedby="emailHelp" placeholder="Enter Tree Name Please">
+
+  </div>
+
+
+
+<div class="form-group">
+    <label for="lastname">Tree Description </label>
+    <textarea name="treeDescription" class="form-control"></textarea>
+    
+  </div>
+  <div class="form-group">
+    <label for="city">treeImages </label>
+  <input type="file"  class="form-control " name="treeImage"  id="mobile" aria-describedby="emailHelp" placeholder="Select the Image ">
+  </div>
+
+    <div class="form-group">
+    <label for="email">Leaf</label>
+    <input type="text" value="" class="form-control " required  name="leaf" id="email" aria-describedby="emailHelp" placeholder="Enter leaf field">
+  
+  </div>
+ 
+ 
+ 
+
+  <div class="form-group">
+    <label for="type_usr"> Life Time </label>
+    <input type="number" name="life" class="form-control" placeholder=" Life time of a tree">
+   
+    
+  </div>
+
+
+  <div class="form-group">
+    <label for="type_usr">  Root</label>
+    <input type="text" name="root"  value=""  placeholder=" Root of tree" class="form-control">
+   
+  </div>
+
+
+  <div class="form-group">
+    <label for="type_usr">  Stem</label>
+    <input type="text" name="stem"  value="" placeholder=" Stem" class="form-control">
+   
+  </div>
+
+
+  <div class="form-group">
+    <label for="type_usr">  Shoot</label>
+    <input type="text" name="shoot"  value="" placeholder="Shoot" class="form-control">
+   
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="type_usr">  Number of Saples</label>
+    <input type="number" name="numOfTree"  placeholder="Number Of Saples Ex: 10" value="" class="form-control">
+   
+  </div>
+
+
+
+
+
+  
+
+  <input type="hidden" name="id" value="">
+
+
+
+
+
+    <div class="form-group">
+    
+    <input type="submit" class="btn btn-outline-info bg-dark" id="password" aria-describedby="emailHelp" value="Submit" >
+  
+  </div>
+      </form>
+
+</div>
+
+</div>
+
+</div>
+</head>
+</html>
+{% endblock %}

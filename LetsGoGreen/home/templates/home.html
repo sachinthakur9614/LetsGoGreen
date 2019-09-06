@@ -1,0 +1,393 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{%load staticfiles %}
+
+
+{% for sl in slide.all %}
+
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class=" carousel-item active" data-interval="500">
+      <img src="{{sl.slide1.url}}" height="600" class="d-block w-100" alt="slider data not  uploaded" >
+          <div class="carousel-caption d-none d-md-block">
+        <h1> Hey Buddy</h1>
+        <p></p>
+      </div>
+    </div>
+    <div class="carousel-item" data-interval="500">
+      <img src="{{sl.slide2.url}}" height="600" class="d-block w-100" alt="slider data not  uploaded">
+      <div class="carousel-caption d-none d-md-block">
+      <h1> How You doing</h1>
+      <p>...</p>
+    </div>
+    </div>
+    <div class="carousel-item" data-interval="500">
+      <img src="{{sl.slide3.url}}" height="600" class="d-block w-100" alt="slider data not  uploaded">
+          <div class="carousel-caption d-none d-md-block">
+           <h1> Going Good</h1>
+          <p>...</p>
+        </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+{% endfor %}
+
+<hr class="bg-info col-md-10">
+
+ <style type="text/css">
+   .description-homepage{
+    transition: all 0.5ms ease-in-out;
+   }
+   .description-homepage:hover{
+    box-shadow: blue 10px;
+    transition: all 0.5ms ease-in-out;
+   }
+    .description-title{
+      color: black;
+    }
+    .description-desc{
+      color: blue;
+    }
+ </style>
+
+
+
+
+<section id="aboutus">
+   <div class="container description-homepage" >
+{% for aboutdescription in aboutDesc.all %}
+
+      <div class="text-center description-title">
+        <h1>{{ aboutdescription.title}} </h1>
+        <hr class="bg-info col-md-8">
+      </div>
+      <div class="row shadow p-3 mb-5 bg-white rounded">
+          <div class="col-md-8">
+        <div class="media">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1 description-desc">{{ aboutdescription.description}}</h5>
+          </div>
+          
+        </div>
+          </div>
+          <div class="col-md-4"> 
+            <img class="border border-info rounded-circle" src="{{ aboutdescription.image.url}}" height="300" width="300" >
+
+          </div>
+
+          
+      </div>
+     </div>
+{% endfor %}
+</section>
+
+
+<section>
+  <div class="container">
+
+
+        <div class="text-center">
+          <h1>Our Team </h1>
+          <hr class="bg-info col-md-8">
+        </div>
+
+
+        <div class="row shadow p-3 mb-5 bg-white rounded">
+
+{% for team in teaminfo.all %}
+            <div class="col-md-6 ">
+            <div class="well well-sm">
+                    <div class="media">
+
+
+                        <a class="thumbnail pull-left" href="#">
+                            <img class="border border-info rounded-circle"  src="{{ team.profilePic.url }}" height="100" width="100">
+                            <div class="col-md-1"></div>
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><span class="label label-info">{{ team.firstName }}  <span> {{ team.lastName }} </span>  </h4>
+               
+                        <p><span class="label label-info"></span> <span class="label label-warning">{{ team.designation }}</span></p>
+                            <p>
+                              <button  class=" btn ">
+                       <a class=" bg-dark btn btn-outline-info" href="{{team.linkedInLink}}">
+                       LinkedIn  </a> </button>
+                       <button  class=" btn ">
+                       <a class=" bg-dark btn btn-outline-info" href="{{team.facebookLink}}">
+                       Facebook  </a> </button>
+                                <button  class=" btn ">
+                       <a class=" bg-dark btn btn-outline-info" href="{{team.twitterLink}}">
+                       Twitter  </a> </button>
+                                
+                                </p>
+
+                        </div>
+                    </div>
+                </div>
+                <hr class="bg-info col-md-6">
+             </div>
+{% endfor %} 
+             <div class="col-md-6 ">
+           
+             </div>
+            
+
+            
+
+            
+        </div>
+        
+
+
+
+
+</section>
+
+
+<section>
+  
+
+<div class="container">
+        <div class="text-center">
+          <h1>Our Services</h1>
+          <hr class="bg-info col-md-8">
+        </div>
+        <div class="row shadow p-3 mb-5 bg-white rounded">
+            <div class="col-md-6 ">
+                
+{% for service in services.all %}
+              <ul class="list-group list-group-flush">
+
+              <li class="list-group-item text-center"> {{ service.serviceName }}</li>
+            
+      
+          </ul>
+{% endfor %}    
+        </div>
+
+             <div class="col-md-6 ">
+             <h3 class="text-center">Contact Us</h3>
+              <hr class="bg-info col-md-8">
+              
+              
+              <form method="POST"  action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div class="form-group">
+            <label for="Password">Name:</label>
+            <input type="text" class="form-control btn-outline-info" name="name" id="name" aria-describedby="emailHelp" placeholder="Enter Name">
+          
+          </div>
+                
+
+                <div class="form-group">
+                
+            <label for="email">Email: </label>
+            <input type="email" class="form-control btn-outline-info" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Please">
+          
+          </div>
+           <div class="form-group">
+                
+            <label for="email">Subject: </label>
+            <input type="text" class="form-control btn-outline-info" id="email" name="subject" aria-describedby="emailHelp" placeholder="Enter Email Please">
+          
+          </div>
+          
+           <div class="form-group">
+            <label for="Password">Mobile:</label>
+            <input type="text" class="form-control btn-outline-info" name='mobile' id="name" aria-describedby="emailHelp" placeholder="Enter Name">
+          
+          </div>
+          <div class="form-group">
+            <label for="Password">Message: </label>
+            <textarea name="message" class="form-control border-info" >
+              
+            </textarea>
+           
+          </div>
+
+            <div class="form-group">
+            
+            <input type="submit" class="btn btn-outline-info bg-dark" id="password" aria-describedby="emailHelp" value="Submit" >
+           <!--Add buttons to initiate auth sequence and sign out--> <br>
+
+
+          </div>
+              </form>
+            
+             </div>
+            
+
+            
+</div>
+</div>
+
+
+
+
+</section>
+
+ 
+  <section id="Events">
+  <div class="container ">
+    <div  class="text-center"><h2> UpComing Events</h2><hr class="bg-info col-md-8"></div>
+  <div class="row shadow p-3 mb-5 bg-white rounded">
+
+      
+   
+
+       {% for event in events %}
+    <div class="col-md-4">
+      <div class="card border-info mb-3" style="width: 18rem;">
+          <img src="{{ event.event_poster.url }}" class="card-img-top" height="140" width="100">
+            <h5 class="card-title text-info text-center">{{ event.event_title }}</h5>
+            <br>
+           
+          <div class="card-body text-info">
+
+            <h5 class="card-title">{{ event.org_name }}</h5>
+            <p class="card-text">{{ event.summary }} <a class=" text-info" href="{% url 'eventDetails' event.id %}">
+        Read More
+  </a></p> 
+      <button  class=" btn">
+        {% if event.event_enddate  %}
+        
+        <div  class="float-left">
+
+          
+
+      <p class="card-text text-info">Event Start: {{ event.event_startdate }}</p>
+      </div>
+
+    <div class="float-right">
+         <a class=" bg-dark btn btn-outline-info" href="{% url 'accounts' %}">Participate  </a>
+       </div>
+         {% endif %}
+      </button>
+    
+             
+          </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+
+    
+    </div>
+
+
+   
+
+
+
+
+
+
+
+<hr class="bg-info col-md-8">
+
+</div>
+</section>
+
+
+<section id="partners">
+    <div class="container">
+      <div  class="text-center"><h2> Our Partners</h2><hr class="bg-info col-md-8"></div>
+    <div class="row shadow p-3 mb-5 bg-white rounded">
+{%  for partner in ourPartner.all %}
+    
+      <div class="col-md-4">
+        <div class="card border-info  mb-3" style="width: 18rem;">
+         <img src="{{ partner.orgLogo.url  }}" class="card-img-top " height="200"  border="100%" width="200" alt="...">
+           <h5 class="card-title text-info text-center"><a href="{{partner.maplocation}}" class="text-info">{{ partner.organisationName }}</a></h5>
+            
+        </div>
+      </div>
+
+{% endfor %}
+
+
+  
+
+
+
+
+  </div>
+
+  </div>
+</section>
+
+
+
+
+
+<section id="partners">
+    <div class="container">
+      <div  class="text-center"><h2> Community Members</h2><hr class="bg-info col-md-8"></div>
+    <div class="row shadow p-3 mb-5 bg-white rounded">
+
+    
+      <div class="col-md-4">
+        <div class="card rounded-pill border-info ml-auto  mb-3" style="width: 25rem;">
+         <img src="..." class="rounded-pill" height="125" width="200" alt="...">
+           <h5 class="card-title text-info text-center">Participant Members</h5>
+            
+        </div> 
+      </div>
+
+ <div class="col-md-2"></div>
+     <div class="col-md-4">
+        <div class="card border-info  rounded-pill mr-auto mb-3" style="width: 25rem;">
+         <img src="..." class="card-img-top" height="125" width="200" alt="...">
+           <h5 class="card-title text-info text-center">Organiser Members</h5>
+            
+        </div>
+      </div>
+   
+
+
+
+
+  </div>
+  <hr class="bg-info col-md-8">
+   <div class="row shadow p-3 mb-5 bg-white rounded">
+    <div class="col-md-2"></div>
+     <center><div class="col-md-4">
+        <div class="card border-info  rounded-pill mr-auto mb-3" style="width: 25rem;">
+         <img src="..." class="card-img-top" height="125" width="200" alt="...">
+           <h5 class="card-title text-info text-center">Sponsors Members</h5>
+            
+        </div>
+      </div>
+   </center>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+{% endblock %}
+

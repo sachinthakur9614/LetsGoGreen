@@ -1,0 +1,93 @@
+{% extends 'nav_plant_tree.html' %}
+
+{%block content %}
+
+
+{%load staticfiles %}
+
+
+
+
+<br><br><br>
+
+    <!--================ Home Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center" style="height: 100;" >
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+            	
+            </div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Welcome {{ user.first_name}} <span>   </span> {{ user.last_name }}</h2>
+                    <p><i> "Lets Contribute to our Society"</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Home Banner Area =================-->
+
+
+
+
+<div class="container">
+
+<div class="row">
+<div class="container">
+                <div class="banner_content text-center">
+                	<br>
+                    <h2></h2>
+                    <br>
+                    <!-- <p><i>"Lets join together to Contribute to our Environment"</i></p> -->
+                </div>
+            </div>
+
+
+<section class="team_area section_gap">
+		<div class="container">
+			<div class="main_title">
+				<h2>Collaborate with Other Ecologist</h2>
+				<!-- <p> Team of Lets Go Meet<img src="{% static 'logo.png'%}" height="20" width="20">  </p> -->
+			</div>
+			<div class="row team_inner">
+
+
+{% for e in info.all%}
+
+				<div class="col-lg-3 col-md-6">
+					<div class="team_item">
+						<div class="team_img">
+							<img class="img-fluid" src="{{ e.profilePic.url }}" alt="">
+						</div>
+						<div class="team_name">
+							<h4><span>{{e.first_name}}</span> <span> {{ e.last_name }}</span> </h4>
+							<p> </p>
+
+							<p class="mt-20">
+
+								{{ e.email }}
+							</p>
+							<div class="social">
+								<a href="{{team.facebookLink}}"><i class="fa fa-facebook"></i></a>
+								<a href="{{team.twitterLink}}" class="active"><i class="fa fa-twitter"></i></a>
+								<a href="{{team.linkedInLink}}"><i class="fa fa-linkedin"></i></a>
+								<a href="#"><i class="fa fa-envelope-o"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+{% endfor %} 
+</div>
+</div>
+</section>
+			
+
+
+
+</div>
+
+</div>
+
+
+
+{% endblock %}

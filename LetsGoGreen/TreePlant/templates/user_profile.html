@@ -1,0 +1,166 @@
+{% extends 'nav_plant_tree.html' %}
+
+{%block content %}
+
+
+{%load staticfiles %}
+
+
+   <!--================ Home Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>  Profile Information {{ user.first_name}} <span>   </span> {{ user.last_name }} </h2>
+                    <p><i> "Lets Contribute to our Society"</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Home Banner Area =================-->
+
+
+<div class="container">
+
+  <div class="row shadow p-3 mb-5 bg-white rounded">
+
+
+<div class="col-md-6">
+
+
+
+
+
+      <h3 class="text-center"> {{ user.username }} Profile</h3>
+    <hr class="bg-info col-md-8">
+        {% if error %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <strong> {{error}}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        {% endif %}
+
+       
+
+
+
+
+
+      <form action="{% url 'edituserProfile' %}"  class="contact_form" method="POST" >
+      
+      {% csrf_token %}
+
+
+
+        <div class="form-group">
+        	
+        	
+    <label for="firstname"> First Name</label>
+    <input type="text" class="form-control "  name="firstName" id="firstname" value="{{request.user.first_name}}" aria-describedby="emailHelp" placeholder="Enter First Name Please">
+
+  </div>
+
+
+
+<div class="form-group">
+    <label for="lastname">Last Name </label>
+    <input type="text" class="form-control "   name="lastName" value="{{request.user.last_name}} " id="lastname" aria-describedby="emailHelp" placeholder="Enter Last Name Please">
+  
+  </div>
+  <div class="form-group">
+    <label for="city">User name </label>
+  <input type="text"  readonly value="{{request.user.username }}" class="form-control border border-info" name="userName"  id="mobile" aria-describedby="emailHelp" placeholder="Enter Your Mobile Number ">
+  </div>
+
+    <div class="form-group">
+    <label for="email">Email </label>
+    <input type="email" readonly value="{{request.user.email}}" class="form-control border border-info" required  name="email" id="email" aria-describedby="emailHelp" placeholder="Enter Email Please">
+  
+  </div>
+ 
+ 
+ {% for profile in profileinfo.all%}
+
+    
+
+  <div class="form-group">
+    <label for="type_usr">  Add Profile </label>
+    <input type="file" name="profileImage" class="form-control">
+    <!-- <img src="{{ profile.profileImage.url }}" height="100" width="100"> -->
+    <input type="hidden" value="{{ profile.profileImage.url }}" name="img">
+
+  </div>
+
+
+  <div class="form-group">
+    <label for="type_usr">  Age</label>
+    <input type="Number" name="age"  value="{{ profile.age }}" class="form-control">
+   
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="type_usr">  Gender </label>
+    <select class="form-control"  name="gender">
+      <option class="form-control"> {{ profile.gender}} Select Gender</option>
+      <option class="form-control">Male</option>
+      <option class="form-control">Female</option>
+
+      <option class="form-control">Prefer Not To Say</option>
+      <option class="form-control">Others</option>
+      
+
+    </select>
+   </div>
+
+
+
+<div class="form-group">
+  <label for="phone">  Mobile Number </label>
+  <input type="text" class="form-control "  name="phone" id="phone" value=" {{profile.phone}}" placeholder="Enter Phone Number ">
+  </div>
+
+  
+
+  <div class="form-group">
+    <label for="type_usr"> Occupation </label>
+   <input type="text" name="occupation"  value=" {{profile.occupation}} "class="form-control">
+  </div>
+
+  
+
+  
+
+
+  
+
+  <input type="hidden" name="id" value="{{profile.id }}">
+
+
+
+{% endfor %}
+
+
+    <div class="form-group">
+    
+    <input type="submit" class="btn btn-outline-info bg-dark" id="password" aria-describedby="emailHelp" value="Submit" >
+  
+  </div>
+      </form>
+
+
+
+    </div>
+  </div>
+
+
+</div>
+
+
+{%endblock%}

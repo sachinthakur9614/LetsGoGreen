@@ -1,0 +1,91 @@
+
+{% extends 'nav_plant_tree.html' %}
+
+{%block content %}
+
+
+{%load staticfiles %}
+
+
+
+
+   <!--================ Home Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>  Provide the planted tree information</h2>
+                     <p><i> "Lets Contribute to our Society"</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Home Banner Area =================-->
+
+
+<div class="container">
+	<div class="row shadow p-3 mb-5 bg-white rounded">
+
+<div class="col-md-6">
+<!-- <a href="{% url 'treeLocation' %}"> Tree Location</a> -->
+
+
+<h5> Tree Count is {{treeCount}}  </h5>
+
+    {% if register %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <strong> {{register}}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        {% endif %}
+      <form method="POST"  class="contact_form"  action="{% url 'treeImagesUpload' %}">
+        {% csrf_token %}
+
+
+       
+
+
+        <div class="form-group">
+        
+    <label for="firstImage">First Image </label>
+    <input type="file" class="form-control " id="email" name="firstImage" aria-describedby="emailHelp" placeholder="Enter Email Please">
+  
+  </div>
+        <div class="form-group">
+        
+
+    <label for="firstImage">Second Image </label>
+    <input type="file" class="form-control " id="email" name="secondImage" aria-describedby="emailHelp" placeholder="Enter Email Please">
+  
+  </div>
+        <div class="form-group">
+        
+    <label for="firstImage">Third  Image </label>
+    <input type="file" class="form-control " id="email" name="thirdImage" aria-describedby="emailHelp" placeholder="Enter Email Please">
+  
+  </div>
+
+    <div class="form-group">
+    
+    <input type="submit" class="btn primary_btn" id="password" aria-describedby="emailHelp" value="Submit" >
+   <!--Add buttons to initiate auth sequence and sign out--> <br>
+
+
+  </div>
+      </form>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
+
+{% endblock %}

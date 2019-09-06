@@ -1,0 +1,116 @@
+
+{% extends 'nav_plant_tree.html' %}
+
+{%block content %}
+
+
+{%load staticfiles %}
+
+
+
+
+
+   <!--================ Home Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2> Tree Catalogue Available </h2>
+                    <p><i> "Lets Contribute to our Society"</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Home Banner Area =================-->
+<br><br>
+
+<div class="container">
+
+
+
+
+<div class="row shadow p-3 mb-5 bg-white rounded">
+	<div class="col-md-12">
+		<br>
+
+
+
+		 
+		<div class="card ">
+		  <div class="card-header ">
+		  	<h3 class="text-center "></h3>
+		<!-- {{ event.event_title }}</h3> -->
+		  </div>
+			  <div class="card-body team_item">
+			  	<div class="float-right">
+			  		 <img src="{{tree.treeImage.url}}" class="border-info" height="300" width="300">
+			  	</div>
+			    <h5 class="card-title team_name"> Tree Name: {{ tree.treeName }}</h5> 
+			    <h6  class="mt-20" class="card-text">{{ tree.treeDescription}}	</h6>
+			    <!-- <h6 class="card-text text-info">Organiser Email: {{event.org_email}}</h6> -->
+			    <!-- <h6 class="card-text text-info"> Life Time:{{ tree.lifeTime }}</h6>
+			    <br>
+ -->
+    <p> Leaf Tree {{ tree.leaf }}</p>
+                <p> Tree Root{{ tree.root }}</p>
+                  <p> Tree Stem {{ tree.stem }}</p>
+                    <p>Tree Shoot {{ tree.shoot }}</p>
+           
+
+
+
+			   <!-- <a  href="{% url 'accounts'%} " class=" btn btn-outline-info">Participate</a> -->
+			  
+			   
+
+			    </div>
+		  <div class="card-footer text-muted border-info">
+
+   					 <h6 class="text-center text-info"> LifeTime  {{ tree.lifeTime }} years</h6>
+  		</div>
+	</div>
+
+		
+
+	</div>
+
+</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+
+
+
+<div class="col-lg-3 col-md-6">
+          <div class="team_item">
+            <div class="team_img">
+              <img class="img-fluid" src="{{  tree.treeImage.url }}" width="200" height="200" border="bg-info" alt="">
+            </div>
+            <div class="team_name">
+              <h4>{{ tree.treeName }}</h4>
+              <!-- <p>Party Manager</p> -->
+              <p >{{ tree.description }} </p>
+                
+              
+           
+              <div class="social">
+              <!--   <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="active"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-envelope-o"></i></a>
+               --></div>
+            </div>
+          </div>
+        </div> 
+
+
+	</div>
+
+
+</div>
+</
+
+{% endblock%}

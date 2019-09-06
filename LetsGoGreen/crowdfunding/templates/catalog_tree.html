@@ -1,0 +1,95 @@
+{% extends 'nav_crowd_funds.html' %}
+
+{%block content %}
+
+
+{%load staticfiles %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watch Them All!</title>
+    <link rel="icon" href="icons/mainicon.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static  'css/style2.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ssocial.css' %}" />
+
+    <script type="text/javascript"  src=""></script>
+
+
+  <script type="text/javascript" src="{% static 'js/js/main.js'%}"></script>
+
+  <script type="text/javascript" src="{% static 'js/js/modernizr.custom.86080.js'%}"></script>
+  
+
+</body>
+</html>
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+<br><br><br><br>
+<br><br><br>
+<div class="container">
+
+
+<h1 class="text-center"> Tree Catalog 7686</h1>
+
+	<div class="row shadow p-3 mb-5 bg-white rounded">
+
+
+
+{% for tree in treeCatalog.all %}
+
+
+
+<div class="col-lg-3 col-md-6">
+          <div class="team_item">
+            <div class="team_img">
+              <img class="img-fluid" src="{{  tree.treeImage.url }}" width="200" height="200" border="bg-info" alt="">
+            </div>
+            <div class="team_name">
+              <h4>{{ tree.treeName }}</h4>
+              <!-- <p>Party Manager</p> -->
+              <p class="mt-20" class="card-text">{{ tree.summary }} <a class=" text-info" href="{% url 'catalogtreemore' tree.id %}">
+        Read More
+  </a></p> 
+                
+              </p>
+              <div class="social">
+              <!--   <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="active"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-envelope-o"></i></a>
+               --></div>
+            </div>
+          </div>
+        </div> 
+
+
+
+
+
+
+
+<!-- <h3>{{ tree.treeDescription}}</h3> -->
+
+
+
+{% endfor %}
+
+</div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,137 @@
+
+{% extends 'nav_plant_tree.html' %}
+
+{%block content %}
+
+
+{%load staticfiles %}
+
+
+
+
+
+
+   <!--================ Home Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>  Provide Tree Location </h2>
+                    <p><i> "Lets Contribute to our Society"</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Home Banner Area =================-->
+
+
+
+{% for i in info.all %}
+
+<h1> {{ i.first_name}}</h1>
+{% endfor %}
+
+<div class="container">
+
+<div class="row shadow p-3 mb-5 bg-white rounded">
+<div class="col-md-6">
+
+      <h3 class="text-center">Tree Location</h3>
+    <hr class="bg-info col-md-8">
+        {% if error %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <strong> {{error}}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        {% endif %}
+
+       
+
+
+
+
+
+      <form action="{% url 'treeLocationForm' %}" class="cotact_form" method="POST" >
+      
+      {% csrf_token %}
+
+        <div class="form-group">
+      
+    <label for="firstname">Stree No </label>
+    <input type="text" class="form-control "  name="street"  aria-describedby="emailHelp" placeholder="Street Number ">
+  
+  </div>
+<div class="form-group">
+    <label for="lastname">Address Line 1 </label>
+    <input type="text" class="form-control"  name="addressline1" aria-describedby="emailHelp" placeholder="Address Line 1">
+  
+  </div>
+  <div class="form-group">
+    <label for="city">Address Line 2 </label>
+  <input type="text" class="form-control " name="addressline2"  aria-describedby="emailHelp" placeholder="Address Line 2 ">
+  </div>
+
+  
+
+
+
+
+
+
+
+    <div class="form-group">
+    <label for="">District </label>
+    <input type="text" class="form-control " required  name="distt" id="email" aria-describedby="emailHelp" placeholder="District">
+  
+  </div>
+  <div class="form-group">
+    <label for="">State</label>
+    <input type="text" class="form-control " required name="state" id="password"  placeholder="Enter StatePlease!">
+  
+  </div>
+
+
+  <div class="form-group">
+    <label for="Password"> Pincode </label>
+    <input type="text" class="form-control"  name="pincode" id="password" placeholder="Enter Pincode Again! ">
+  
+  </div>
+
+  <div class="form-group">
+    <label for="Password"> Latitude </label>
+    <input type="text" class="form-control "  name="longitude" id="password" placeholder="Enter Latitude Again! ">
+  
+  </div>
+
+<div class="form-group">
+  <label for="phone"> Longitiude </label>
+  <input type="text" class="form-control  "  name="latitude" id="phone" placeholder="Enter Longitiude Number ">
+  <i class="fa fa-info">Watch the video to provide longitude and latitude <a href="{% url 'video' %}">here</a></i>
+  </div>
+<!-- 
+  <div class="form-group">
+    <label for="type_usr"> User Type </label>
+   <input type="file" name="profileImage" class="form-control">
+  </div -->
+
+
+
+
+
+
+    <div class="form-group">
+    
+    <input type="submit" class="btn btn-outline-info bg-dark" id="password" aria-describedby="emailHelp" value="Submit" >
+  
+  </div>
+
+      </form>
+
+</div>
+</div>
+
+{% endblock %}

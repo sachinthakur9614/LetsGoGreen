@@ -1,0 +1,226 @@
+{% extends 'nav_plant_tree.html' %}
+
+{%block content %}
+
+
+{%load staticfiles %}
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+
+<script>
+window.onload = function () {
+
+var dps = [];
+var chart = new CanvasJS.Chart("chartContainer", {
+	exportEnabled: true,
+	title :{
+		text: "Increase in numbers of trees planted"
+	},
+	axisY: {
+		includeZero: false
+	},
+	data: [{
+		type: "spline",
+		markerSize: 0,
+		dataPoints: dps 
+	}]
+});
+
+var xVal = 0;
+var yVal = 100;
+var updateInterval = 1000;
+var dataLength = 50; // number of dataPoints visible at any point
+
+var updateChart = function (count) {
+	count = count || 1;
+	// count is number of times loop runs to generate random dataPoints.
+	for (var j = 0; j < count; j++) {	
+		yVal = yVal + Math.round(5 + Math.random() *(-5-5));
+		dps.push({
+			x: xVal,
+			y: yVal
+		});
+		xVal++;
+	}
+	if (dps.length > dataLength) {
+		dps.shift();
+	}
+	chart.render();
+};
+
+updateChart(dataLength); 
+setInterval(function(){ updateChart() }, updateInterval); 
+
+}
+</script>
+    <!--================ Home Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center" style="height: 100;" >
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+            	
+            </div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Welcome {{ user.first_name}} <span>   </span> {{ user.last_name }}</h2>
+                    <p><i> "Lets Contribute to our Society"</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+<br>
+
+<div class="container">
+
+<div class="row">
+	<div class="col-md-3">
+		<br><br><br>
+<div id="chartContainer" style="height: 370px; width: 450px; max-width: 920px; margin: 0px auto;"></div>
+</div>
+<div class="col-md-9">
+	<div  id="chartdiv"></div></div>
+</div>
+
+</div>
+	<style>
+#chartdiv {
+	margin-left: 200px;
+  width: 100%;
+  height: 500px;
+}
+
+</style>
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "country": "Lithuania",
+  "litres": 501.9
+}, {
+  "country": "Czechia",
+  "litres": 301.9
+}, {
+  "country": "Ireland",
+  "litres": 201.1
+}, {
+  "country": "Germany",
+  "litres": 165.8
+}, {
+  "country": "Australia",
+  "litres": 139.9
+}, {
+  "country": "Austria",
+  "litres": 128.3
+}, {
+  "country": "UK",
+  "litres": 99
+}, {
+  "country": "Belgium",
+  "litres": 60
+}, {
+  "country": "The Netherlands",
+  "litres": 50
+} ];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "litres";
+pieSeries.dataFields.category = "country";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<!-- HTML -->
+
+
+</div>
+
+
+</div>
+
+<script src="{% static 'js/canvasjs.min.js' %}"></script>
+
+
+<!-- 
+
+
+<div class="wrapper">
+    <!-- Sidebar --><!-- 
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Bootstrap Sidebar</h3>
+
+
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Dummy Heading</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav> -->
+
+</div>
+
+
+
+
+{% endblock %}
